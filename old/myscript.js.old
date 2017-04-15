@@ -1,0 +1,71 @@
+var button = document.getElementById('stream'), source, search;
+
+var logo = new Image();
+var context = canvas.getContext('2d');
+    logo.src = '/pictures/twitter.jpg';
+    logo.addEventListener('load', function() {
+        context.drawImage(logo, 0, 0, 50, 50);
+});
+
+button.addEventListener('click', function() {
+    var button = document.getElementById('stream')
+    button.value == 'Stop' ? stop() : start();
+    button.value == 'Stop' ? button.value = "Stream" : button.value = "Stop";
+    //setInterval(stream, 30);
+});
+
+function start() {
+   source = new EventSource('/stream');
+   source.onmessage = function(event) {
+       var datadiv = document.getElementById("data"),
+           br = document.createElement('br'),
+           txt = document.createElement('div');
+       txt.innerHTML = event.data;
+       
+       if (datadiv.lastChild.data == 'Nothing received yet') {
+           datadiv.removeChild(datadiv.lastChild);
+           datadiv.classList.remove('center');
+       } 
+       datadiv.insertBefore(br, datadiv.firstChild);
+       datadiv.insertBefore(txt, datadiv.firstChild);
+   }
+}
+
+function stop() {
+    console.log('im closing');
+    source.close();
+}
+
+function search_update() {
+    var form = new FormData();
+    var xhr = new XMLHttpRequest();
+    search = document.getElementById('track').value.split(',');
+    xhr.addEventListener('readystatechange', function() { 
+        if (xhr.readyState === XMLHttpRequest.DONE && ( xhr.status === 200 )) {
+            start();
+        }
+        else if (xhr.readyState === XMLHttpRequest.DONE && xhr.status != 200) { // En cas d'erreur !
+             console.log('Une erreur est survenue !\n\nCode :' + xhr.status + '\nTexte : ' + xhr.statusText);
+        }
+       else {
+             console.log('no condition to enter');
+        }
+    });
+    stop();
+    console.log(search);
+    form.append('track',search);
+    xhr.open('POST','/', true);
+    xhr.send(form);
+} 
+function color_update() {
+    var color = document.getElementById('textcolor').value;
+    var searchedRule = document.styleSheets[0].cssRules;
+    console.log(searchedRule.length);
+    for (i=0; i < searchedRule.length; i++) {
+        if ( searchedRule[i].cssText.split(' ')[0] == ".content"){
+            searchedRule[i].style.color = color; 
+            console.log('im IN color');
+        }
+    }
+    console.log(color);
+}

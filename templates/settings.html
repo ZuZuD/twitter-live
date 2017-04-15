@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  {% include "head.html" %}
+  <body>
+  {% from "header.html" import header as header %}
+      {{ header|replace("settings.html","/")|replace("Settings","Live")|safe }}
+  {% include "nav.html" %}
+  <section>
+      <article>
+          <div id="options" class="formright">
+             <span><input type="checkbox" name="show_author" id="show_author"/><label for="show_author">Show authors</label><br/></span>
+             <span><input type="checkbox" name="show_date" id="show_date"/> <label for="show_date">Show date</label><br/></span>
+          </div>
+          <div class="formcenter">
+              <form onsubmit="return false;">
+                   <input type="submit" id='submit' value="Submit" class="buttonblue"/>
+                   <input type="submit" id='reset' value="Reset" class="buttonred"/>
+              </form>
+         </div>
+  </section>
+  <section class="center">
+  </section>
+  <script src='script/image.js'></script>
+  <script src='script/settings.js'></script>
+  </body>
+</html>

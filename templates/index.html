@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  {% include "head.html" %}
+  <body>
+  {% from "header.html" import header as header %}
+      {{ header|safe }}
+
+  {% include "nav.html" %}
+  <section>
+      <article>
+          <div id="data"></div>
+      </article>
+  </section>
+  <script src='script/image.js'></script>
+  <script src='script/myscript.js'></script>
+  </body>
+</html>
