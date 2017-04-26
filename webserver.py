@@ -15,7 +15,7 @@ app = Flask(__name__)
 params = config.params
 stop = False
 opts = { 
-         "boldify_author": True,
+         "boldify_keyword": True,
          "show_author": True,
          "show_date": True
        }
@@ -95,6 +95,7 @@ def streamer():
     if req.status_code == requests.codes.ok:
         # Default chunk of 512b
         p = compile_params(params)
+        count = 0
         while not stop:
             for mytweet in req.iter_lines(decode_unicode=True):
                 try:
@@ -114,11 +115,12 @@ def streamer():
                       if msg != '': msg += ' : '
                       content = '<span class="content">'+tweet['text']+'</span>'
 
-                      if opts['boldify_author']:
+                      if opts['boldify_keyword']:
                           content = boldify(p, content)
 
                       msg += content
-                      yield('data: %s\n\n' % (msg))
+                      count += 1
+                      yield('data: %s\n\n' %(msg))
                 except json.decoder.JSONDecodeError as e:
                     print('%s Decode ERORR %s\n' %(mytweet,e))
     else:

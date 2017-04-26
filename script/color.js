@@ -2,29 +2,44 @@
 function color_update(classCSS,id) {
     var color = document.getElementById(id).value;
     var searchedRule = document.styleSheets[0].cssRules;
-    console.log(searchedRule.length);
     for (i=0; i < searchedRule.length; i++) {
-        if ( searchedRule[i].cssText.split(' ')[0] == classCSS){
+        cssName = searchedRule[i].cssText.split(' ')[0];
+        cssColor = searchedRule[i].style.color;
+        if (cssName == classCSS){
             searchedRule[i].style.color = color;
-            console.log('im IN color');
+            // store cookie if enable
+            if (window.c_enable) setCookie(cssName,color,180);
         }
     }
 }
-
 var checkbox = document.getElementsByName("textcolor");
 var searchedRule = document.styleSheets[0].cssRules;
 box_len = checkbox.length;
-for (i=0; i < box_len; i++) {
-  for (j=0; j < searchedRule.length; j++) {
-      if ( searchedRule[j].cssText.split(' ')[0] == checkbox[i].id){
-          hex_col = rgb2hex(searchedRule[j].style.color);
-          checkbox[i].value = hex_col;
-      }
+
+// init color with cookies if present
+if (window.c_enable) { 
+  for (i=0; i < searchedRule.length; i++) {
+    cssName = searchedRule[i].cssText.split(' ')[0];
+    cssColor = searchedRule[i].style.color;
+    if (checkCookie(cssName)){
+      searchedRule[i].style.color = getCookie(cssName);
+     }
   }
 }
 
-function rgb2hex(rgb)
-{
+// init color checkbox with right color
+for (j=0; j < box_len; j++) {
+  for (i=0; i < searchedRule.length; i++) {
+    cssName = searchedRule[i].cssText.split(' ')[0];
+    cssColor = searchedRule[i].style.color;
+    if (cssName == checkbox[j].id) {
+      hex_col = rgb2hex(cssColor);
+      checkbox[j].value = hex_col;
+    }
+  }
+}
+
+function rgb2hex(rgb) {
   var a = rgb.split("(")[1].split(")")[0];
   a = a.split(",");
   var b = a.map(function(x){             //For each array element

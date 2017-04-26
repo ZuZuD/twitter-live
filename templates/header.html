@@ -1,23 +1,25 @@
 {% set header %}
 <header>
-    <section class="left1">
-    <canvas id="canvas" width="85" height="65"></canvas>
-    </section>
-    <section class="left2">
-        <form action="settings.html" id="settings_form">
-            <input type="submit" value="Settings" id="settings" class="buttonblue"/>
-        </form>
-    </section>
-    <section class="center"> 
-        <form onsubmit="return false;">
-            <input type="submit" id='stream' value="Stream" class="buttonblue"/> 
-        </form>
-    </section>
-    <section class="right">
-        <form onsubmit="return false;">
-            <input type="submit" id="search" value="Search" class="buttonblue"/> 
-            <input type="text" name="track" id="track" class="textinput"/>
-        </form>
+    <section>
+        <div class="left1">
+            <canvas id="canvas" width="80" height="65"></canvas>
+        </div>
+        <div class="left2">
+            <form action="settings.html" id="settings_form">
+                <input type="submit" value="Settings" id="settings" class="buttonblue"/>
+            </form>
+        </div>
+        <div class="center"> 
+            <form onsubmit="return false;">
+                <input type="submit" id='stream' value="Stream" class="buttonblue"/> 
+            </form>
+        </div>
+        <div class="right">
+            <form onsubmit="return false;">
+                <input type="submit" id="search" value="Search" class="buttonblue"/> 
+                <input type="text" name="track" id="track" class="textinput"/>
+            </form>
+        </div>
     </section>
 </header>
 {% endset %}
