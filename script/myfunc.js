@@ -6,6 +6,15 @@ function checkArrays( arrA, arrB ){
     }
     return true;
 } 
+function fliptostop() {
+   if (btn_stream.value != "Stop") btn_stream.value = 'Stop';
+}
 
-function submit_stg(){}
-function reset_stg(){}
+function fliptostart() {
+   if (btn_stream.value != 'Stream') btn_stream.value = 'Stream';
+}
+   
+function log_xhr(xhr) {
+  console.log('Error happens !\n\nCode :' + xhr.status + '\nTexte : ' + xhr.statusText);
+}
+

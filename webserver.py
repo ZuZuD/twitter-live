@@ -9,8 +9,10 @@ import simplejson
 import requests
 from requests_oauthlib import OAuth1
 import config
+import logger
+import logging
 
-
+LOG = logging.getLogger(__name__)
 app = Flask(__name__)
 params = config.params
 stop = False
@@ -51,7 +53,7 @@ def style(filename):
 @app.route('/tick_opts',methods=['GET'])
 def tick_opts():
     if flask.request.method == 'GET':
-      print(opts)
+      LOG.warn(opts)
       return json.dumps(opts)
 
 @app.route('/settings.html',methods=['POST','GET'])
@@ -60,12 +62,12 @@ def settings():
       return flask.render_template('settings.html')
     if flask.request.method == 'POST':
       form = flask.request.form
-      print(json.loads(form['tick_opts']))
+      LOG.warn(json.loads(form['tick_opts']))
       post_opts = json.loads(form['tick_opts'])
       for i in post_opts:
         opts[i] = post_opts[i]
       for i in opts:
-        print(i,opts[i])
+        LOG.warn(i,opts[i])
       return ('Ok redirecting...')
       
 
@@ -73,7 +75,7 @@ def settings():
 def index():
     if flask.request.method == 'POST':
         form = flask.request.form
-        print(type(form),form,form['track'])
+        LOG.warn(type(form),form)
         if form['track']:
             params['track'] = form['track']
     return flask.render_template('index.html')
@@ -97,10 +99,17 @@ def streamer():
         p = compile_params(params)
         count = 0
         while not stop:
-            for mytweet in req.iter_lines(decode_unicode=True):
+            #for mytweet in req.iter_lines(decode_unicode=True):
+            for mytweet in req.iter_lines():
                 try:
+                    #tweet = json.loads(mytweet.decode('utf-8'))
                     tweet = json.loads(mytweet.decode('utf-8'))
+                except json.decoder.JSONDecodeError as e:
+                    LOG.warn('%s Decode ERORR %s\n' %(mytweet,e))
+                    LOG.debug('%s\n' %(mytweet))
+                else:
                     msg = ''
+                    LOG.debug('%s\n' %(tweet))
                     # dont bother for lost tweet msg
                     if 'limit' not in tweet:
 
@@ -121,11 +130,9 @@ def streamer():
                       msg += content
                       count += 1
                       yield('data: %s\n\n' %(msg))
-                except json.decoder.JSONDecodeError as e:
-                    print('%s Decode ERORR %s\n' %(mytweet,e))
     else:
         # handle non 200 OK response
-        print('HTTP %i\n' % req.status_code)
+        LOG.warn('HTTP %i\n' % req.status_code)
 
 
 def compile_params(params):
@@ -145,5 +152,5 @@ def boldify(p,content):
     return content
 
 if __name__ == "__main__":
-    app.run(debug = True, threaded=True, host='0.0.0.0')
+    app.run(debug = False, host='0.0.0.0')
 
