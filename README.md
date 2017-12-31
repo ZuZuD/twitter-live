@@ -29,9 +29,15 @@ Display it on your control monitor!
 
 ### Local development/ Testing:
 
- `pip3 install -r requirements.txt`<br>
+ `pip install virtualenv pip3`<br>
+ `virtual -p /usr/lib/python3 venv`<br>
+ `venv/bin/activate`<br>
+ `source venv/bin/activate`<br>
+ `git clone https://github.com/ZuZuD/Twitter-Live.git`<br>
+ `pip install -r requirements.txt`<br>
  `python3 webserver.py`<br>
- browse `http://localhost:5000`<br>
+ Finally browse:
+ `http://localhost:5000`<br>
 
 
    
