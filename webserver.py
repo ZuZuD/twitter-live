@@ -21,6 +21,7 @@ opts = {
          "show_author": True,
          "show_date": True
        }
+
 def get_oauth():
     '''
     Generates an OAuth object
@@ -66,8 +67,6 @@ def settings():
       post_opts = json.loads(form['tick_opts'])
       for i in post_opts:
         opts[i] = post_opts[i]
-      for i in opts:
-        LOG.warn(i,opts[i])
       return ('Ok redirecting...')
       
 
@@ -75,7 +74,7 @@ def settings():
 def index():
     if flask.request.method == 'POST':
         form = flask.request.form
-        LOG.warn(type(form),form)
+        LOG.warn(orm)
         if form['track']:
             params['track'] = form['track']
     return flask.render_template('index.html')
@@ -142,7 +141,6 @@ def compile_params(params):
     return p
 
 def boldify(p,content):
-
     for elt in p:    
         x = ''
         x = p[elt].findall(content)
@@ -153,4 +151,3 @@ def boldify(p,content):
 
 if __name__ == "__main__":
     app.run(debug = False, host='0.0.0.0')
-
