@@ -1,7 +1,4 @@
-logging==0.5.1.2
-simplejson==3.10.0
-flask==0.12
-requests==2.10
+Flask==0.12
+requests==2.10.0
 requests_oauthlib==0.7.0
-re==2.2.1
-logging==0.5.1.2
+simplejson==3.13.2
