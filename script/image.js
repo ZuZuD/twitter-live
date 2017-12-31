@@ -1,5 +1,5 @@
 var logo = new Image();
-logo.src = '/pictures/twitter3.png';
+logo.src = '/pictures/twitter.png';
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 logo.addEventListener('load', function() {
