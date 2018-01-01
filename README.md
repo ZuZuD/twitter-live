@@ -16,28 +16,36 @@ Want to estimate your popularity on a day-to-day basis?<br>
 
 Display it on your control monitor!
 
-### Features:
+### Features
 
- `Monitor multiples keywords`
- `Customize your colors`
- `Remember your settings via cookies`
- `Stop and Start the Stream`
+ `Monitor multiples keywords`<br>
+ `Customize your colors`<br>
+ `Remember your settings via cookies`<br>
+ `Stop and Start the Stream`<br>
 
-### Requirements:
+### Requirements
 
  `Twitter API Apps for API credentials` https://apps.twitter.com<br>
 
-### Local development/ Testing:
+### Local development / Testing
 
  `pip install virtualenv pip3`<br>
  `virtual -p /usr/lib/python3 venv`<br>
- `venv/bin/activate`<br>
  `source venv/bin/activate`<br>
  `git clone https://github.com/ZuZuD/Twitter-Live.git`<br>
  `pip install -r requirements.txt`<br>
  `python3 webserver.py`<br>
- Finally browse:
+  Finally browse:<br>
  `http://localhost:5000`<br>
 
+### Contributing
 
-   
+The goal of this project is to learn about web-based technologies, share a useful tool, and ease people first Open-Source contribution.
+You can check Low-hanging-fruit issues for first Pull-Request.
+
+
+#### Linter
+
+Please format your code with the following Linter :<br>
+&nbsp;&nbsp;![autopep8](https://atom.io/packages/python-autopep8) for python<br>
+&nbsp;&nbsp;![standard](https://github.com/standard/standard) for Javascript<br>
