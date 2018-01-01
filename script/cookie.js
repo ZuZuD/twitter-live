@@ -1,43 +1,47 @@
-if (navigator.cookieEnabled) var c_enable = true;
-else var c_enable = false;
+/* eslint-disable no-undef */
+/* eslint-disable camelcase */
+/* eslint-disable no-unused-vars */
 
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-    console.log('set cookie: '+cname+' = '+cvalue);
+var c_enable = false
+if (navigator.cookieEnabled) c_enable = true
+
+function setCookie (cname, cvalue, exdays) {
+  var d = new Date()
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000))
+  var expires = 'expires=' + d.toUTCString()
+  document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/'
+  console.log('set cookie: ' + cname + ' = ' + cvalue)
 }
 
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            console.log('get cookie: '+cname);
-            return c.substring(name.length, c.length);
-        }
+function getCookie (cname) {
+  var name = cname + '='
+  var ca = document.cookie.split(';')
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i]
+    while (c.charAt(0) === ' ') {
+      c = c.substring(1)
     }
-    return "";
+    if (c.indexOf(name) === 0) {
+      console.log('get cookie: ' + cname)
+      return c.substring(name.length, c.length)
+    }
+  }
+  return ''
 }
 
-function checkCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            console.log('check cookie: '+cname+' true');
-            return true;
-        }
+function checkCookie (cname) {
+  var name = cname + '='
+  var decodedCookie = decodeURIComponent(document.cookie)
+  var ca = decodedCookie.split(';')
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i]
+    while (c.charAt(0) === ' ') {
+      c = c.substring(1)
     }
-    return false;
+    if (c.indexOf(name) === 0) {
+      console.log('check cookie: ' + cname + ' true')
+      return true
+    }
+  }
+  return false
 }
