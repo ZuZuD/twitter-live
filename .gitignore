@@ -1,4 +1,8 @@
 activity.log*
+config.py
 old/*
 sample_twitter.txt
 __pycache__/
+.cache
+*.py.swp
+*.pyc
