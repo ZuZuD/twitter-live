@@ -2,14 +2,14 @@
 
 [![Python](https://img.shields.io/badge/python-3.5-blue.svg)](https://www.python.org/downloads/release/python-350/)
 [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ZuZuD/ZuZuD/master/LICENSE)
-[![Contributors](https://img.shields.io/github/contributors/ZuZuD/Twitter-Live.svg)](https://github.com/ZuZuD/ZuZuD/graphs/contributors)
-[![Beginner Issues](https://img.shields.io/github/issues/ZuZuD/Twitter-Live/Low-Hanging%20Fruit.svg?label=low-hanging%20fruits)](https://github.com/ZuZuD/ZuZuD/labels/Low-Hanging%20Fruit)
+[![JS Standard](https://img.shields.io/badge/code%20style%20JS-normal-lightgrey.svg)](https://github.com/standard/standard)
+[![License](https://img.shields.io/badge/Licence-MIT-pink.svg)](https://github.com/ZuZuD/twitter-live/blob/npm/LICENCE)
+[![PR Welcome](https://img.shields.io/badge/PR-Welcome-brightgreen.svg)](https://github.com/ZuZuD/twitter-live/pulls)
 
 ![Twitter-Live-Screenshot](http://i65.tinypic.com/2hxn5sx.png)
 
 
-Monitor your prefered keywords in Live from Twitter!
+Monitor your favorite keywords Live from Twitter!
 
 Need feedback about your business on social network?<br>
 Want to estimate your popularity on a day-to-day basis?<br>
@@ -19,9 +19,8 @@ Display it on your control monitor!
 ### Features
 
  `Monitor multiples keywords`<br>
+ `Keep settings in memory via cookies`<br>
  `Customize your colors`<br>
- `Remember your settings via cookies`<br>
- `Stop and Start the Stream`<br>
 
 ### Requirements
 
@@ -38,14 +37,6 @@ Display it on your control monitor!
   Finally browse:<br>
  `http://localhost:5000`<br>
 
-### Contributing
+### History
 
-The goal of this project is to learn about web-based technologies, share a useful tool, and ease people first Open-Source contribution.
-You can check Low-hanging-fruit issues for first Pull-Request.
-
-
-#### Linter
-
-Please format your code with the following Linter :<br>
-&nbsp;&nbsp;![autopep8](https://atom.io/packages/python-autopep8) for python<br>
-&nbsp;&nbsp;![standard](https://github.com/standard/standard) for Javascript<br>
+This tool has been created to monitor feedbacks and popularity for a product. It is based on the twitter streaming API to filter the requested #hastags or keywords from the message flow.

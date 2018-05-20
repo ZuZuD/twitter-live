@@ -6,3 +6,6 @@ __pycache__/
 .cache
 *.py.swp
 *.pyc
+jasmine/*
+SpecRunner.html
+node_modules/*
