@@ -1,0 +1,21 @@
+{
+  "name": "twitter",
+  "version": "1.0.0",
+  "description": "[![Python](https://img.shields.io/badge/python-3.5-blue.svg)](https://www.python.org/downloads/release/python-350/) [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ZuZuD/ZuZuD/master/LICENSE) [![Contributors](https://img.shields.io/github/contributors/ZuZuD/Twitter-Live.svg)](https://github.com/ZuZuD/ZuZuD/graphs/contributors) [![Beginner Issues](https://img.shields.io/github/issues/ZuZuD/Twitter-Live/Low-Hanging%20Fruit.svg?label=low-hanging%20fruits)](https://github.com/ZuZuD/ZuZuD/labels/Low-Hanging%20Fruit)",
+  "main": "my.conf.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "jasmine": "^2.9.0"
+  },
+  "devDependencies": {
+    "karma": "~0.10",
+    "karma-html2js-preprocessor": "~0.1"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "author": "",
+  "license": "ISC"
+}
